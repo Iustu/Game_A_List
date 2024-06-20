@@ -1,0 +1,20 @@
+###
+POST http://localhost:8080/game_a_list/jogo
+Content-Type: application/json
+
+{
+  "titulo": "Elden Ring 2",
+  "imagem": "eldenRing.png",
+  "publicadora" : "Bandai",
+  "estudio" : "FromSoftware"
+}
+
+###
+GET http://localhost:8080/game_a_list/jogo
+
+###
+DELETE http://localhost:8080/game_a_list/jogo/2
+
+###
+PUT http://localhost:8080/game_a_list/jogo/1?titulo=teste
+Content-Type: application/json
