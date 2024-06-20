@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "b9b3c0f4-7dad-49bf-a426-d8b64e22761a",
+		"name": "PCS-SGBD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27334733",
+		"_collection_link": "https://pm-avaliacao.postman.co/workspace/My-Workspace~2934de16-e01f-400a-8476-8ea3637aa098/collection/27334733-b9b3c0f4-7dad-49bf-a426-d8b64e22761a?action=share&source=collection_link&creator=27334733"
+	},
+	"item": [
+		{
+			"name": "CriarUsuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nome\":\"Leonardo\",\"apelido\":\"Mad-Clap\",\"email\":\"leolima345995@gmail.com\",\"senha\":\"Senha123\",\"ativo\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/user/new",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"user",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logarUsuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"apelido\":\"Mad-Clap\",\"senha\":\"Senha123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/user/login",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastrarJogoPossuido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"66739ecb2cbab93535a2c423\",\r\n    \"idUsuario\": 1,\r\n    \"idJogo\": 2,\r\n    \"plataforma\": \"Nintendo\",\r\n    \"dataAdicao\": \"20/06/2024\",\r\n    \"estado\": \"JOGANDO\",\r\n    \"feedback\": \"I believe I can fly\",\r\n    \"horasJogadas\": 2,\r\n    \"nota\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/ownedGames/new",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"ownedGames",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperarJogoPossuido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/ownedGames/1",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"ownedGames",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
