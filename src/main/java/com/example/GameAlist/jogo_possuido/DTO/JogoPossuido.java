@@ -1,7 +1,17 @@
 package com.example.GameAlist.jogo_possuido.DTO;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.validation.constraints.*;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        property = "estado", visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = JogoPossuido.class, name = "NAO_JOGADO"),
+        @JsonSubTypes.Type(value = JogoJogado.class, names = {"JOGANDO", "DROPADO","FINALIZADO", "PLATINADO"})
+})
 public class JogoPossuido {
 
     public String id;

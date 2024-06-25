@@ -4,7 +4,7 @@ import com.example.GameAlist.usuario.DTO.Usuario;
 import jakarta.persistence.*;
 
 @Entity
-@Table(uniqueConstraints = {
+@Table(name = "USUARIO",uniqueConstraints = {
         @UniqueConstraint(columnNames = { "apelido" }, name = "apelido_constraint"),
         @UniqueConstraint(columnNames = { "email"}, name = "email_constraint")})
 class UsuarioModel {

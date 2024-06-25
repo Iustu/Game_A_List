@@ -41,6 +41,9 @@ public class UsuarioService {
     }
 
     protected ResponseDTO cadastarUsuario (Usuario novoUsuario){
+        if(novoUsuario.getIdUsuario()!= null){
+            return new ResponseDTO(403,"Usuário já cadastrado", "Already Exists");
+        }
 
         UsuarioModel usuario = new UsuarioModel(novoUsuario);
 
@@ -73,7 +76,9 @@ public class UsuarioService {
 
     protected ResponseDTO atualizarUsuario (Usuario usuario){
 
-        if (usuario.getIdUsuario() == null) return null;
+        if (usuario.getIdUsuario() == null){
+            return new ResponseDTO(404,"Usuário não cadastrado", "BAD REQUEST");
+        }
 
         try {
             repo.save(new UsuarioModel(usuario));
@@ -87,17 +92,14 @@ public class UsuarioService {
                     "Erro ao atualizar"
             );
 
-            //Define e retorna se os dados enviados violam as restrições do e-mail e apelido dos usuários serem únicos
-            StringBuilder resBuilder = new StringBuilder();
+            //Retorna se os dados enviados violam as restrições do e-mail ou apelido dos usuários serem únicos
+
             if(e.getMessage().contains("apelido_constraint")){
-                resBuilder.append("Esse apelido já está sendo usado por outro usuário!|");
-                res.body = resBuilder.toString();
+                res.body = "Esse apelido já está sendo usado por outro usuário!";
             }
             if(e.getMessage().contains("email_constraint")){
-                resBuilder.append("Esse e-mail já foi registrado por outro usuário!");
-                res.body = resBuilder.toString();
+                res.body = "Esse e-mail já foi registrado por outro usuário!";
             }
-
             return res;
         } catch (Exception e){
             return new ResponseDTO(
@@ -112,7 +114,7 @@ public class UsuarioService {
 
         UsuarioModel usuario = new UsuarioModel(UsuarioDTO);
 
-        Optional<UsuarioModel> usuarioOpt = repo.findByApelido(usuario.apelido);
+        Optional<UsuarioModel> usuarioOpt = repo.findById(usuario.idUsuario);
 
         AtomicReference<ResponseDTO> res = new AtomicReference<>();
         usuarioOpt.ifPresentOrElse(

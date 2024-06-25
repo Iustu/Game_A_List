@@ -61,6 +61,7 @@ public class UsuarioController {
         ResponseDTO res = service.excluirUsuario(usuario);
 
         return ResponseEntity.status(res.code)
+                .header(DESCRIPTION, res.header)
                 .body(res.body);
 
     }

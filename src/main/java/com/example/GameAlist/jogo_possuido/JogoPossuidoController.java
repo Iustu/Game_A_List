@@ -22,16 +22,17 @@ public class JogoPossuidoController {
 
     @GetMapping(value = "/ownedGames/{id}")
     @ResponseBody
+    @Validated
     public ResponseEntity recuperarJogos(@PathVariable("id") Long idUsuario) {
 
         Optional<List<JogoPossuidoModel>> res = Optional.ofNullable(service.recuperaJogosPossuidos(idUsuario));
         if(res.isEmpty())
-            return ResponseEntity.status(400)
-                    .header(DESCRIPTION, "Dados_invalidos")
-                    .body("Apelido ou senha incorretos!");
+            return ResponseEntity.status(500)
+                    .header(DESCRIPTION, "Internal Server Error")
+                    .body("Não foi possível encontrar os jogos possuídos na biblioteca");
         else
             return ResponseEntity.status(200)
-                    .header(DESCRIPTION, "Encontrado")
+                    .header(DESCRIPTION, "Jogos encontrados")
                     .body(res.get());
     }
 
@@ -39,6 +40,28 @@ public class JogoPossuidoController {
     public ResponseEntity cadastrarJogoPossuido (@Valid @RequestBody JogoPossuido jogo){
 
         ResponseDTO res = service.cadastrarJogoPossuido(jogo);
-        return null;
+        return ResponseEntity.status(res.code)
+                .header(DESCRIPTION, res.header)
+                .body(res.body);
     }
+
+    @PostMapping(value = "/ownedGames/update")
+    public ResponseEntity atualizarJogoPossuido (@Valid @RequestBody JogoPossuido jogo){
+
+        ResponseDTO res = service.atualizarJogoPossuido(jogo);
+        return ResponseEntity.status(res.code)
+                .header(DESCRIPTION, res.header)
+                .body(res.body);
+
+    }
+
+    @PostMapping (value = "/ownedGames/delete/{id}")
+    public ResponseEntity excluirJogoPossuido (@PathVariable("id") String id){
+
+        ResponseDTO res = service.excluirJogoPossuido(id);
+        return ResponseEntity.status(res.code)
+                .header(DESCRIPTION, res.header)
+                .body(res.body);
+    }
+
 }

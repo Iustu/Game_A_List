@@ -11,9 +11,9 @@ import java.time.format.DateTimeFormatter;
 
 @Document (collection = "jogos_possuidos")
 class JogoPossuidoModel {
-
     @MongoId
     protected String id;
+    @Field()
     protected Long idUsuario;
     protected Long idJogo;
     protected String plataforma;
@@ -23,42 +23,22 @@ class JogoPossuidoModel {
     @Field(targetType = FieldType.STRING)
     protected StatusJogo estado;
 
-    protected String feedback;
-    protected int horasJogadas;
-    protected int nota;
-
 
     /** Construtores **/
 
     public JogoPossuidoModel(){}
 
     public JogoPossuidoModel(String id,Long idUsuario, Long idJogo, String plataforma, LocalDate dataAdicao,
-                             StatusJogo estado, String feedback, int horasJogadas, int nota) {
+                             StatusJogo estado) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.idJogo = idJogo;
         this.plataforma = plataforma;
         this.dataAdicao = dataAdicao;
         this.estado = estado;
-        this.feedback = feedback;
-        this.horasJogadas = horasJogadas;
-        this.nota = nota;
-    }
-
-
-    public JogoPossuidoModel(String id, Long idUsuario, Long idJogo, String plataforma, String dataAdicao,
-                             StatusJogo estado, String feedback, int horasJogadas, int nota) {
-        this.id = id;
-        this.idUsuario = idUsuario;
-        this.idJogo = idJogo;
-        this.plataforma = plataforma;
-        this.dataAdicao = LocalDate.parse(dataAdicao, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        this.estado = estado;
-        this.feedback = feedback;
-        this.horasJogadas = horasJogadas;
-        this.nota = nota;
     }
     public JogoPossuidoModel(JogoPossuido jogo) {
+
         this.id = jogo.id;
         this.idUsuario = jogo.idUsuario;
         this.idJogo = jogo.idJogo;
@@ -89,17 +69,6 @@ class JogoPossuidoModel {
         return estado;
     }
 
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public float getHorasJogadas() {
-        return horasJogadas;
-    }
-
-    public int getNota() {
-        return nota;
-    }
 
     /** Setters **/
 
@@ -121,17 +90,5 @@ class JogoPossuidoModel {
 
     public void setEstado(StatusJogo estado) {
         this.estado = estado;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
-
-    public void setHorasJogadas(int horasJogadas) {
-        this.horasJogadas = horasJogadas;
-    }
-
-    public void setNota(int nota) {
-        this.nota = nota;
     }
 }

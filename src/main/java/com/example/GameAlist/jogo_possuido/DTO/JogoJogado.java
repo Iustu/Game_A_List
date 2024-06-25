@@ -1,9 +1,7 @@
 package com.example.GameAlist.jogo_possuido.DTO;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import com.example.GameAlist.utils.horaDoubleValidator.HoraDouble;
+import jakarta.validation.constraints.*;
 
 public class JogoJogado extends JogoPossuido {
 
@@ -11,9 +9,10 @@ public class JogoJogado extends JogoPossuido {
     public String feedback;
 
     @NotNull
-    public int horasJogadas;
+    @HoraDouble
+    public double horasJogadas;
 
-    @Positive
+    @PositiveOrZero
     @Max(10)
     public int nota;
 
@@ -23,7 +22,7 @@ public class JogoJogado extends JogoPossuido {
     public JogoJogado(){};
 
     public JogoJogado(String id, Long usuarioId, Long jogoId, String plataforma, String dataAdicao, String estado,
-            String feedback, int horasJogadas, int nota) {
+            String feedback, double horasJogadas, int nota) {
         super(id, usuarioId, jogoId, plataforma, dataAdicao, estado);
         this.feedback = feedback;
         this.horasJogadas = horasJogadas;

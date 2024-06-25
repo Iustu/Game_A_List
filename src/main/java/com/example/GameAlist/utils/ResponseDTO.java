@@ -4,10 +4,10 @@ public class ResponseDTO {
 
     public int code;
 
-    public String body;
+    public Object body;
     public String header;
 
-    public ResponseDTO(int code, String body, String header) {
+    public ResponseDTO(int code, Object body, String header) {
         this.code = code;
         this.body = body;
         this.header = header;
