@@ -1,4 +1,4 @@
-package game_a_list.comentario;
+package com.example.GameAlist.comentario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class ComentarioService {
     }
 
     public void saveComentario( Comentario comentario) {
-        Optional<Comentario> comentarioOptional = comentarioRepository.findComentarioById(comentario.getId());
+        Optional<Comentario> comentarioOptional = comentarioRepository.findById(comentario.getId());
         if (comentarioOptional.isPresent()){
             throw new IllegalStateException("comentario feito");
         }

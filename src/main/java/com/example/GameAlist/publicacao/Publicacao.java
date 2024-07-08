@@ -1,4 +1,4 @@
-package game_a_list.publicacao;
+package com.example.GameAlist.publicacao;
 
 
 import jakarta.persistence.*;

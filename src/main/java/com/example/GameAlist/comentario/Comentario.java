@@ -1,4 +1,4 @@
-package game_a_list.comentario;
+package com.example.GameAlist.comentario;
 
 
 import jakarta.persistence.*;

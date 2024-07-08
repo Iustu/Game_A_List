@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "game_a_list/jogo")
+@RequestMapping(path = "jogo")
 public class JogoController {
 
     private final JogoService jogoService;
@@ -18,18 +18,11 @@ public class JogoController {
     }
 
     @GetMapping
-    public List<Jogo> getJogos(){
-        return jogoService.getJogos();
-    }
+    public List<Jogo> getJogos() {return jogoService.getJogos();}
 
-    @PostMapping
+    @PostMapping(value = "/new")
     public void saveJogo(@RequestBody Jogo jogo){
         jogoService.saveJogo(jogo);
-    }
-
-    @DeleteMapping(path = "{jogoId}")
-    public void deleteJogo(@PathVariable("jogoId") Long jogoId) {
-        jogoService.deleteJogo(jogoId);
     }
 
     @PutMapping(path = "{jogoId}")

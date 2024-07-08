@@ -12,14 +12,14 @@ import jakarta.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "user")
 @Validated
 public class UsuarioController {
     public static final String DESCRIPTION = "description";
     @Autowired
     UsuarioService service;
 
-    @GetMapping(value = "/user/login")
+    @GetMapping(value = "/login")
     @ResponseBody
     public ResponseEntity logUsuario (@Valid @RequestBody Login usuario){
 
@@ -35,7 +35,7 @@ public class UsuarioController {
                     .body(res.get());
     }
 
-    @PostMapping(value = "/user/new")
+    @PostMapping(value = "/new")
     public ResponseEntity cadastrarUsuario (@Valid @RequestBody Usuario novoUsuario){
 
         ResponseDTO res = service.cadastarUsuario(novoUsuario);
@@ -45,7 +45,7 @@ public class UsuarioController {
                 .body(res.body);
     }
 
-    @PostMapping (value = "/user/update")
+    @PostMapping (value = "/update")
     public ResponseEntity atualizarUsuario (@Valid @RequestBody Usuario usuarioAtualizado){
 
         ResponseDTO res = service.atualizarUsuario(usuarioAtualizado);
@@ -55,7 +55,7 @@ public class UsuarioController {
                     .body(res.body);
     }
 
-    @PostMapping (value = "user/delete")
+    @PostMapping (value = "/delete")
     public ResponseEntity excluirUsuario (@Valid @RequestBody Usuario usuario){
 
         ResponseDTO res = service.excluirUsuario(usuario);
@@ -64,5 +64,15 @@ public class UsuarioController {
                 .header(DESCRIPTION, res.header)
                 .body(res.body);
 
+    }
+
+    @PostMapping (value = "/changePassword")
+    public ResponseEntity alterarSenha (@Valid @RequestBody Login senhaAlterada){
+
+        ResponseDTO res = service.alterarSenha(senhaAlterada);
+
+        return ResponseEntity.status(res.code)
+                .header(DESCRIPTION, res.header)
+                .body(res.body);
     }
 }

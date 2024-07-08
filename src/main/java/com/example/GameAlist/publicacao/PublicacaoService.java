@@ -1,4 +1,4 @@
-package game_a_list.publicacao;
+package com.example.GameAlist.publicacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class PublicacaoService {
     }
 
     public void savePublicacao( Publicacao publicacao) {
-        Optional<Publicacao> publicacaoOptional = publicacaoRepository.findPublicacaoById(publicacao.getId());
+        Optional<Publicacao> publicacaoOptional = publicacaoRepository.findById(publicacao.getId());
         if (publicacaoOptional.isPresent()){
             throw new IllegalStateException("email taken");
         }

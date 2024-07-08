@@ -1,7 +1,9 @@
 package com.example.GameAlist.usuario;
 
 import com.example.GameAlist.usuario.DTO.Login;
+import com.example.GameAlist.usuario.DTO.Mappers.UsuarioModelMapper;
 import com.example.GameAlist.usuario.DTO.Usuario;
+import com.example.GameAlist.utils.JWT.JwtAuth;
 import com.example.GameAlist.utils.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,27 +19,34 @@ public class UsuarioService {
     @Autowired
     UsuarioRepositoy repo;
 
+    @Autowired
+    UsuarioModelMapper mapper;
+
+    @Autowired
+    JwtAuth token;
+
     protected UsuarioModel loginUsuario(Login login){
 
         Optional<UsuarioModel> usuarioOpt = repo.findByApelido(login.getApelido());
 
         if(usuarioOpt.isEmpty()) return null;
 
-        UsuarioModel usuario = usuarioOpt.get();
+        UsuarioModel usuarioBD = usuarioOpt.get();
 
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if(!encoder.matches(login.getSenha(),usuario.senha)){
+        if(!encoder.matches(login.getSenha(),usuarioBD.senha)){
             return null;
         }
 
-        if (!usuario.ativo){
-            usuario = usuarioInativo();
+        if (!usuarioBD.ativo){
+            usuarioBD = usuarioInativo();
+        }else {
+            usuarioBD.senha= token.criarToken(usuarioBD.idUsuario);
         }
 
-        usuario.senha=null;
 
-        return usuario;
+        return usuarioBD;
     }
 
     protected ResponseDTO cadastarUsuario (Usuario novoUsuario){
@@ -76,12 +85,24 @@ public class UsuarioService {
 
     protected ResponseDTO atualizarUsuario (Usuario usuario){
 
+        usuario.setAtivo(true);
+
         if (usuario.getIdUsuario() == null){
             return new ResponseDTO(404,"Usuário não cadastrado", "BAD REQUEST");
         }
 
+        Optional<UsuarioModel> usuarioBdOpt = repo.findById(usuario.getIdUsuario());
+
+        if(usuarioBdOpt.isEmpty()){
+            return new ResponseDTO(404,"Entidade não existe no banco de dados", "BAD REQUEST");
+        }
+
+        UsuarioModel usuarioBD = usuarioBdOpt.get();
+
+        mapper.updateUsuarioModelFromDto(usuario,usuarioBD);
+
         try {
-            repo.save(new UsuarioModel(usuario));
+            repo.save(usuarioBD);
             return new ResponseDTO(200,"Usuário atualizado", "Atualizado");
 
         } catch (DataIntegrityViolationException e) {
@@ -110,11 +131,10 @@ public class UsuarioService {
         }
     }
 
-    protected ResponseDTO excluirUsuario (Usuario UsuarioDTO){
+    protected ResponseDTO excluirUsuario (Usuario usuario){
 
-        UsuarioModel usuario = new UsuarioModel(UsuarioDTO);
 
-        Optional<UsuarioModel> usuarioOpt = repo.findById(usuario.idUsuario);
+        Optional<UsuarioModel> usuarioOpt = repo.findById(usuario.getIdUsuario());
 
         AtomicReference<ResponseDTO> res = new AtomicReference<>();
         usuarioOpt.ifPresentOrElse(
@@ -147,6 +167,34 @@ public class UsuarioService {
         return res.get();
     }
 
+    protected ResponseDTO alterarSenha(Login senhaAlterada) {
+        Optional<UsuarioModel> usuarioBdOpt = repo.findByApelido(senhaAlterada.getApelido());
+
+        if(usuarioBdOpt.isEmpty()){
+            return new ResponseDTO(404,"Usuário não existe no banco de dados", "BAD REQUEST");
+        }
+
+        UsuarioModel usuarioBD = usuarioBdOpt.get();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        if(encoder.matches(senhaAlterada.getSenha(),usuarioBD.senha)){
+            return new ResponseDTO(400,"A nova senha deve ser diferente da antiga", "BAD REQUEST");
+        }
+
+        try {
+            usuarioBD.senha = encoder.encode(senhaAlterada.getSenha());
+
+            repo.save(usuarioBD);
+            return new ResponseDTO(200,"Senha atualizada com sucesso", "Atualizado");
+
+        } catch (Exception e) {
+            return new ResponseDTO(
+                    500,
+                    "Ocorreu um erro ao tentar alterar a senha",
+                    "Internal Server Error");
+        }
+    }
+
     /************************************ utils ***********************************************************/
 
     private static ResponseDTO jaCadastrado(UsuarioModel cadastro, Usuario tentativaRecadastro){
@@ -171,5 +219,6 @@ public class UsuarioService {
                 new UsuarioModel((long) -1,"Inativo","Inativo","Inativo","Inativo",false);
         return usuarioInativo;
     }
+
 }
 

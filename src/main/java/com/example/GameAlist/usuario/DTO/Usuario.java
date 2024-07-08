@@ -19,11 +19,11 @@ public class Usuario {
     @Email
     protected String email;
 
-    @NotNull
+
     @Size(min = 4)
     protected String senha;
 
-    @NotNull
+
     protected boolean ativo;
 
 

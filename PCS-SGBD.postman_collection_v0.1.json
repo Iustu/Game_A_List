@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "b9b3c0f4-7dad-49bf-a426-d8b64e22761a",
+		"name": "PCS-SGBD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27334733",
+		"_collection_link": "https://pm-avaliacao.postman.co/workspace/My-Workspace~2934de16-e01f-400a-8476-8ea3637aa098/collection/27334733-b9b3c0f4-7dad-49bf-a426-d8b64e22761a?action=share&source=collection_link&creator=27334733"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "CriarUsuario",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Leonardo\",\r\n    \"apelido\": \"Mad-Clap\",\r\n    \"email\": \"leolima345995@gmail.com\",\r\n    \"senha\": \"Senha123\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/new",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CriarUsuario2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"JoaoRibas\",\r\n    \"apelido\": \"Arriba_S\",\r\n    \"email\": \"JoaoRibas@gmail.com\",\r\n    \"senha\": \"Senha321\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/new",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExcluirUsuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"nome\": \"JoaoRibas\",\r\n    \"apelido\": \"Arriba_S\",\r\n    \"email\": \"JoaoRibas@gmail.com\",\r\n    \"senha\": \"Senha321\",\r\n    \"ativo\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/delete",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUsuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiR2FtZUFsaXN0LWFwaSJ9.vbkBDj9VCsK8IIqiEylf3iPlAYOoKONdGwuHroIFYbg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nome\": \"Leonardo\",\r\n    \"apelido\": \"Mad-Clap\",\r\n    \"email\": \"leolima345995@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logarUsuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"apelido\":\"Mad-Clap\",\"senha\":\"Senha123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/login",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlterarSenha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiR2FtZUFsaXN0LWFwaSJ9._bgu3rMInCEMU9vVc3q0NpVpt26WqUaHE4oQIC0bEjY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"apelido\":\"Mad-Clap\",\"senha\":\"Senha123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user/changePassword",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JogoPossuido",
+			"item": [
+				{
+					"name": "updateJogoJogado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"667a22735165d0138a590d3e\",\r\n    \"idUsuario\": 3,\r\n    \"idJogo\": 3,\r\n    \"plataforma\": \"Nintendo\",\r\n    \"dataAdicao\": \"20/06/2024\",\r\n    \"estado\": \"JOGANDO\",\r\n    \"feedback\": \"Super Mario Sixty four\",\r\n    \"horasJogadas\": 6.08,\r\n    \"nota\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/ownedGames/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastar_JogoJogado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 3,\r\n    \"idJogo\": 2,\r\n    \"plataforma\": \"Nintendo\",\r\n    \"dataAdicao\": \"20/06/2024\",\r\n    \"estado\": \"JOGANDO\",\r\n    \"feedback\": \"I believe I can fly\",\r\n    \"horasJogadas\": 2,\r\n    \"nota\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/ownedGames/new",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastar_JogoPossuido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"idJogo\": 2,\r\n    \"plataforma\": \"Nintendo\",\r\n    \"dataAdicao\": \"20/06/2024\",\r\n    \"estado\": \"NAO_JOGADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/ownedGames/new",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_JogoPossuido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6679dc3785cc6e4a60532dc1\",\r\n    \"idUsuario\": 1,\r\n    \"idJogo\": 2,\r\n    \"plataforma\": \"Nintendo\",\r\n    \"dataAdicao\": \"20/06/2024\",\r\n    \"estado\": \"NAO_JOGADO\",\r\n    \"feedback\": \"Super Mario Sixty four\",\r\n    \"horasJogadas\": 6.8,\r\n    \"nota\":5\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/ownedGames/update",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RecuperarJogoPossuido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/ownedGames/2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarJogoPossuido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/ownedGames/delete/6679995dc1b7af3295ea7a34",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"ownedGames",
+								"delete",
+								"6679995dc1b7af3295ea7a34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jogo",
+			"item": [
+				{
+					"name": "GetJogos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/jogo",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"jogo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CriarJogo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/jogo/new",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"jogo",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

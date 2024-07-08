@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "ownedGames")
 @Validated
 public class JogoPossuidoController {
 
@@ -20,7 +20,7 @@ public class JogoPossuidoController {
     @Autowired
     JogoPossuidoService service;
 
-    @GetMapping(value = "/ownedGames/{id}")
+    @GetMapping(value = "/{id}")
     @ResponseBody
     @Validated
     public ResponseEntity recuperarJogos(@PathVariable("id") Long idUsuario) {
@@ -36,7 +36,7 @@ public class JogoPossuidoController {
                     .body(res.get());
     }
 
-    @PostMapping(value = "/ownedGames/new")
+    @PostMapping(value = "/new")
     public ResponseEntity cadastrarJogoPossuido (@Valid @RequestBody JogoPossuido jogo){
 
         ResponseDTO res = service.cadastrarJogoPossuido(jogo);
@@ -45,7 +45,7 @@ public class JogoPossuidoController {
                 .body(res.body);
     }
 
-    @PostMapping(value = "/ownedGames/update")
+    @PostMapping(value = "/update")
     public ResponseEntity atualizarJogoPossuido (@Valid @RequestBody JogoPossuido jogo){
 
         ResponseDTO res = service.atualizarJogoPossuido(jogo);
@@ -55,7 +55,7 @@ public class JogoPossuidoController {
 
     }
 
-    @PostMapping (value = "/ownedGames/delete/{id}")
+    @PostMapping (value = "/delete/{id}")
     public ResponseEntity excluirJogoPossuido (@PathVariable("id") String id){
 
         ResponseDTO res = service.excluirJogoPossuido(id);

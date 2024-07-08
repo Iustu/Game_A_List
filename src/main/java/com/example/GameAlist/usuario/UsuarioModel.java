@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "USUARIO",uniqueConstraints = {
         @UniqueConstraint(columnNames = { "apelido" }, name = "apelido_constraint"),
         @UniqueConstraint(columnNames = { "email"}, name = "email_constraint")})
-class UsuarioModel {
+public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "id_usuario", nullable = false)

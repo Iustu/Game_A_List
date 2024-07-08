@@ -1,4 +1,4 @@
-package game_a_list.comentario;
+package com.example.GameAlist.comentario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
