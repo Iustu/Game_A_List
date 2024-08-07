@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Document (collection = "jogos_possuidos")
 class JogoPossuidoModel {
@@ -34,7 +35,7 @@ class JogoPossuidoModel {
         this.idUsuario = idUsuario;
         this.idJogo = idJogo;
         this.plataforma = plataforma;
-        this.dataAdicao = dataAdicao;
+        this.dataAdicao = Objects.requireNonNullElseGet(dataAdicao, LocalDate::now);
         this.estado = estado;
     }
     public JogoPossuidoModel(JogoPossuido jogo) {
@@ -43,7 +44,12 @@ class JogoPossuidoModel {
         this.idUsuario = jogo.idUsuario;
         this.idJogo = jogo.idJogo;
         this.plataforma = jogo.plataforma;
-        this.dataAdicao = LocalDate.parse(jogo.dataAdicao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        if(jogo.dataAdicao!=null){
+            this.dataAdicao = LocalDate.parse(jogo.dataAdicao,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        }
+        else this.dataAdicao = LocalDate.now();
+
         this.estado = StatusJogo.valueOf(jogo.estado);
     }
 

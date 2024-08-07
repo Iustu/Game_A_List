@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "localhost:4200")
 @RequestMapping(path = "user")
 @Validated
 public class UsuarioController {
@@ -19,7 +20,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService service;
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     @ResponseBody
     public ResponseEntity logUsuario (@Valid @RequestBody Login usuario){
 

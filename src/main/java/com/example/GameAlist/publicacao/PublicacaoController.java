@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "localhost:4200")
 @RequestMapping(path="game_a_list/publicacao")
 public class PublicacaoController {
 

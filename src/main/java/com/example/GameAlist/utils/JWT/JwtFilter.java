@@ -43,6 +43,8 @@ public class JwtFilter extends OncePerRequestFilter {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             } else {
+                System.out.print("TOKEN AUSENTE");
+
                 throw new RuntimeException("O token está ausente.");
             }
         }
