@@ -2,7 +2,7 @@
 
 
 
-## Recuperar jogos da biblioteca do usuário
+## Buscar jogos da biblioteca do usuário
 Tipo de operação: leitura
 
 Arquivos envolvidos (lista de arquivos envolvidos na implementação):
@@ -92,3 +92,7 @@ Potenciais gargalos do sistema:
 ### MEDIÇÃO 2
 
 A ser realizada
+
+# Gráficos do primeiro teste de carga do serviço "Recuperar jogos da biblioteca do usuário"
+
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/BuscarJogosDaBiblioteca_Teste11.png)
