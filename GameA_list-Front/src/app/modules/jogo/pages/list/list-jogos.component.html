@@ -1,0 +1,31 @@
+
+<div class="container-content">
+
+  <div>
+    <app-search-bar (searchText)="search($event)"></app-search-bar>
+  </div>
+  
+
+  <div class="flex flex-col md:justify-center md:mx-auto h-full" *ngIf="jogos$().length==0 && error==false">
+    <div class="flex flex-col items-center justify-items-center mt-5 py-10">
+      <mat-icon style="width: 100px !important; height: 85px !important;" 
+      class="material-symbols-rounded text-8xl font-light accent-color">contract_delete</mat-icon>
+      <p class="font-normal text-lg p-3 mt-3 accent-color"> Não há clientes cadastrados</p>
+      </div>
+  </div>
+
+
+  <div>
+    <app-item-list [jogo]="jogo" *ngFor="let jogo of visiblejogos$()"></app-item-list>
+  </div>
+  
+
+  <div class="fixed bottom-20 sm:bottom-10 right-4 sm:right-12 lg:right-32">
+    <button mat-raised-button type="button" color="primary"  class="w-28" aria-label="Adicionar novo cliente" [routerLink]="['./add']">
+      <mat-icon>add</mat-icon> Novo
+    </button>
+  </div>
+
+</div>
+
+

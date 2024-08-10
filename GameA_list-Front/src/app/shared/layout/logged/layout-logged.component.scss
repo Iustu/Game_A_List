@@ -1,0 +1,83 @@
+/* Em seu arquivo de estilos (por exemplo, styles.css) */
+/* Estilos para telas grandes (desktop) */
+@media (min-width: 768px) {
+  .mobile-layout {
+    display: none; /* Esconda elementos destinados a dispositivos móveis em telas maiores */
+  }
+  .sidenav-container {
+    height: 100%;
+    background-color: transparent !important;
+  }
+
+  .sidenav {
+    width: 15%;
+    min-width: 230px;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .content-navigation{
+    padding: 30px;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  .top-menu{
+    background-color: white;
+    box-shadow: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .icon-span{
+    color: #5502ad;
+
+  }
+  .text-span{
+    color: #5502ad;
+  }
+}
+
+/* Estilos para telas pequenas (mobile) */
+@media (max-width: 767px) {
+  .desktop-layout {
+    display: none; /* Esconda elementos destinados a desktops em telas menores */
+  }
+  .sidenav-container {
+    height: 100%;
+  }
+
+  .sidenav {
+    width: 200px;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .content-navigation{
+    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="flex flex-row h-full" style="margin-top: 100px;">
+
+  <div class="flex flex-col w-full max-w-3xl">
+
+        <div *ngIf="!showMessageError" style="text-align: center;">
+          <div class="text-lg self-center" style="color: #7025d9;"><b>Parabéns por ter sido aprovado!</b></div>
+          <div class="self-center">Continue com o seu cadastro!</div>
+        </div>
+        <div *ngIf="showMessageError" style="font-size: 16px;text-align: center;margin-top: 20px;">
+          <div><b>Você ja iniciou um processo de cadastro.</b></div>
+          <div style="font-size: 16px;margin-top: 10px;"><a [routerLink]="['/login']">Ir para o login</a></div>
+        </div>
+
+        <form [formGroup]="signUpForm" class="grid grid-cols-1 w-full max-w-2xl self-center px-10" style="margin-top: 30px;">
+
+            <mat-form-field class="mat-badge-medium">
+                <mat-label>Nome completo</mat-label>
+                <input matInput value="" formControlName="fullName">
+                <mat-error *ngIf="invalid('fullName', 'required')">Preencha este campo com nome e sobrenome.</mat-error>
+                <mat-error *ngIf="invalid('fullName', 'minlength')">Preencha no mínimo 4 caracteres.</mat-error>
+                <mat-error *ngIf="invalid('fullName', 'maxlength')">Preencha no máximo 100 caracteres.</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="mat-badge-medium">
+                <mat-label>Email</mat-label>
+                <input matInput value="" formControlName="email">
+                <mat-error *ngIf="invalid('email', 'required')">Preencha este campo com um email válido.</mat-error>
+                <mat-error *ngIf="invalid('email', 'email')">Email inválido.</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="mat-badge-medium">
+                <mat-label>Número de contato</mat-label>
+                <input matInput value="" placeholder="(00) 00000-0000" mask="(00) 00000-0000" formControlName="cellphone">
+                <mat-error *ngIf="invalid('cellphone', 'required')">Preencha este campo com um número válido.</mat-error>
+                <mat-error *ngIf="invalid('cellphone', 'mask')">Número inválido.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mat-badge-medium">
+                <mat-label>Senha</mat-label>
+                <input matInput value="" type="password" formControlName="password">
+                <mat-error *ngIf="invalid('password', 'required')">A senha deve conter pelo menos um caractere especial.</mat-error>
+                <mat-error *ngIf="invalid('password', 'minlength')">Preencha no mínimo 6 caracteres.</mat-error>
+                <mat-error *ngIf="invalid('password', 'maxlength')">Preencha no máximo 20 caracteres.</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="mat-badge-medium">
+                <mat-label>Confirme a senha</mat-label>
+                <input matInput value="" type="password" formControlName="passConfirm">
+                <mat-error *ngIf="invalid('passConfirm', 'required')">As senhas devem ser iguais.</mat-error>
+            </mat-form-field>
+
+            <button class="save-button" (click)="save()" [disabled]="!signUpForm.valid">
+              Salvar
+            </button>
+
+        </form>
+    </div>
+
+    <div class="bg-gray-500 hidden md:flex w-full">
+        <img ngSrc="../../../../../assets/imgs/arq1.jpg" class="object-cover w-full" alt="designer" height="2880" width="1920">
+    </div>
+
+
+</div>

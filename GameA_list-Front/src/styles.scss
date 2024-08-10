@@ -1,0 +1,192 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other modules in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$game-a-list-primary: mat.define-palette(mat.$deep-purple-palette);
+$game-a-list-accent: mat.define-palette(mat.$purple-palette, 100);
+
+// The warn palette is optional (defaults to red).
+$game-a-list-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$game-a-list-theme: mat.define-light-theme((
+  color: (
+    primary: $game-a-list-primary,
+    accent: $game-a-list-accent,
+    warn: $game-a-list-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($game-a-list-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  line-height: normal;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: medium !important;
+  background-color: #ede7f6;
+  //background-color: #edf0f1;
+}
+
+.mat-mdc-text-field-wrapper {
+  flex: none !important;
+}
+
+.mat-mdc-card {
+  box-shadow: none !important;
+}
+
+[type='button'].mdc-button, [type='submit'].mdc-button {
+  height: 50px !important;
+  min-width: unset!important;
+  font-size: 15px !important;
+  border-radius: 50px !important;
+}
+
+[ng-reflect-ng-switch="error"] {
+  margin-bottom: 12px !important;
+}
+
+ng-validation-messages {
+  font-size: 13px !important;
+}
+
+.mat-calendar-table-header th {
+  font-size: 12px !important;
+  font-weight: normal !important;
+  padding: 0 0 2px 0 !important;
+}
+
+.mat-toolbar {
+  background: #fafafa !important;
+  border-bottom: 1px solid #e0e0e0;
+  color: black !important;
+  font-size: 16px !important;
+}
+
+//save-button cinza ao estar desabilitado e com animação ripple
+.save-button {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;
+  background-position: center;
+  background-color: #7025D9;
+  color: white;
+  border-radius: 30px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.8s;
+}
+.save-button:hover:enabled {
+    background: #8439ec radial-gradient(circle, transparent 1%, #8439ec 1%) center/15000%;
+  }
+  .save-button:active:enabled {
+    background-color: mat.get-color-from-palette($game-a-list-accent);
+    background-size: 100%;
+    transition: background 0s;
+  }
+.save-button:disabled{background-color:grey}
+
+
+//save-button cinza ao estar desabilitado e com animação ripple
+.normal-button {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;
+  background-position: center;
+  background-color: #fcfaff;
+  border: 1px solid #7025D9;
+  color: #7025D9;
+  border-radius: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.8s;
+}
+.normal-button:hover:enabled {
+    background: #8439ec radial-gradient(circle, transparent 1%, #8439ec 1%) center/15000%;
+  }
+  .normal-button:active:enabled {
+    background-color: mat.get-color-from-palette($game-a-list-accent);
+    background-size: 100%;
+    transition: background 0s;
+  }
+.normal-button:disabled{background-color:grey}
+
+
+.delete-button {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;
+  background-position: center;
+  background-color: #fcfaff;
+  border: 1px solid red;
+  color: red;
+  border-radius: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.8s;
+}
+.normal-button:hover:enabled {
+    background: #8439ec radial-gradient(circle, transparent 1%, #8439ec 1%) center/15000%;
+  }
+  .normal-button:active:enabled {
+    background-color: mat.get-color-from-palette($game-a-list-accent);
+    background-size: 100%;
+    transition: background 0s;
+  }
+.normal-button:disabled{background-color:grey}
+
+
+.container-content {
+  margin: 7px;
+  margin-top:  15px;
+}
+
+/*primary: $game-a-list-primary,
+accent: $game-a-list-accent,
+warn: $game-a-list-warn,*/
+
+.primary-color {
+  color: mat.get-color-from-palette($game-a-list-primary) !important;
+}
+
+.accent-color {
+  color: mat.get-color-from-palette($game-a-list-accent) !important;
+}
+
+.warn-color {
+  color: mat.get-color-from-palette($game-a-list-warn) !important;
+}
+
+
+
+
+
+

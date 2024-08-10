@@ -1,0 +1,30 @@
+
+
+
+<mat-card role="button" class="my-3 drop-shadow cursor-pointer hover:drop-shadow-md" [routerLink]="['./manage', jogo.uid]">
+
+  <mat-card-content>
+    <div class="flex flex-row gap-3">
+
+      <!--<div class="flex items-center">
+        <div class="rounded-full w-12 h-12 bg-center" style="background-image: url(assets/imgs/user_1.png)"></div>
+      </div>-->
+
+      <div class="flex flex-col sm:flex-row flex-wrap grow gap-2">
+        <div class="flex flex-col grow gap-2">
+          <div class="font-medium"> {{jogo.name}} </div>
+          <div> {{jogo.cellphone}} </div>
+        </div>
+        <div class="flex sm:flex-col flex-wrap gap-2">
+          <div class="flex items-center text-amber-500 px-1">
+            <mat-icon class="flex-none label text-lg/[22px]">label</mat-icon>
+            <div class="flex-1 text-amber-600 text-sm font-medium">Atender</div>
+          </div>
+          <div class="text-sm"> {{jogo.createdAt | date : 'dd/MM/yyyy'}} </div>
+        </div>
+      </div>
+
+    </div>
+  </mat-card-content>
+
+</mat-card>

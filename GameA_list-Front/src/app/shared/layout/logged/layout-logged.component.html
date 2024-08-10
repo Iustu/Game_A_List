@@ -1,0 +1,73 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar> <a class="grid justify-items-center w-full"> <img src="../../../assets/imgs/logo-edit.png" class="h-14"> </a> </mat-toolbar>
+    <mat-nav-list>
+      <div>
+        <br>
+      </div>
+      <a mat-list-item href="#">
+        <span class="flex align-center">
+          <span class="icon-span">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+          </span>
+          <span class="text-span ml-2"> {{menu$().title}}</span>
+        </span>
+      </a>
+      <a mat-list-item href="#">
+        <span class="flex align-center">
+          <span class="icon-span">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="precision_manufacturing"></mat-icon>
+          </span>
+          <span class="text-span ml-2"> Planejados</span>
+        </span>
+      </a>
+      <a mat-list-item href="#"><span class="flex align-center"><span class="icon-span"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="attach_money"></mat-icon></span>  <span class="text-span ml-2"> Financeiro</span></span></a>
+      <a mat-list-item href="#"><span class="flex align-center"><span class="icon-span"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat_bubble"></mat-icon></span> <span class="text-span ml-2"> Chat</span></span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button *ngIf="menu$().backRoute" [routerLink]="menu$().backRoute"  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span style="width: 85%;">{{menu$().title}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menuNotification" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon matBadge="20" matBadgeColor="primary">notifications</mat-icon>
+      </button>
+      <mat-menu #menuNotification="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button [routerLink]="'/architect/options'" class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button [routerLink]="'/architect/profile'"  mat-menu-item>Dados Pessoais</button>
+        <button [routerLink]="'/company'" mat-menu-item>Dados da Empresa</button>
+        <button [routerLink]="'/user/assinatura'" mat-menu-item>Minha assinatura</button>
+        <button (click)="loggout()" mat-menu-item>Sair</button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <div class="content-navigation">
+        <router-outlet></router-outlet>
+    </div>
+
+    <app-menu-mobile class="mobile-layout"></app-menu-mobile>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

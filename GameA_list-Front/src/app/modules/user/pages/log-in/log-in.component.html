@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="flex flex-row h-full">
+
+  <div class="flex flex-col w-full max-w-3xl">
+
+    <div style="margin-top: 100px;">
+
+      <div *ngIf="isLogin">
+        <form [formGroup]="form" class="flex flex-col items-center justify-items-center mt-5">
+
+          <div class="w-8/12" style="text-align: center;">
+            <p class="text-lg self-center m-10">Login</p>
+          </div>
+          <div class="w-8/12" *ngIf="isInvalid"  style="text-align: center;color: #ca0303;">
+            <p class="text-sm self-center m-10">E-mail ou senha inválidos</p>
+          </div>
+
+          <mat-form-field class="w-8/12">
+              <mat-label>Apelido</mat-label>
+              <input matInput formControlName="apelido" autocomplete="apelido">
+          </mat-form-field>
+
+          <mat-form-field class="w-8/12">
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="senha"  type="password" autocomplete="current-password">
+          </mat-form-field>
+
+          <div class="w-8/12" style="text-align: center;">
+            <button class="save-button" style="margin-bottom: 15px;" (click)="login()" [disabled]="!form.valid">
+              Entrar
+            </button>
+          </div>
+
+          <div style="text-align: center;margin-top: 0px;margin-bottom: 15px;margin-top:0px;"  class="w-8/12">
+            <a href="javascript:void(0)" style="font-size: 13px;" (click)="isLogin=!isLogin" >Esqueci minha senha</a>
+          </div>
+
+        </form>
+      </div>
+      <div *ngIf="!isLogin">
+        <form [formGroup]="formForgotPassword" class="flex flex-col items-center justify-items-center mt-5">
+
+          <div class="w-8/12" style="text-align: center;">
+            <p class="text-lg self-center m-10">E-mail de cadastro</p>
+          </div>
+
+
+          <mat-form-field class="w-8/12">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="email" autocomplete="email">
+          </mat-form-field>
+
+
+          <div class="w-8/12" style="text-align: center;">
+            <button class="save-button" style="margin-bottom: 15px;" (click)="forgotPassword()" [disabled]="!formForgotPassword.valid">
+              Recuperar senha
+            </button>
+          </div>
+
+
+          <div style="text-align: center;margin-top: 0px;margin-bottom: 15px;;margin-top: 0px;"  class="w-8/12">
+            <a href="javascript:void(0)" style="font-size: 13px;" (click)="isLogin=true" >voltar</a>
+          </div>
+
+        </form>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <div class="bg-gray-500 hidden md:flex w-full" >
+      <img ngSrc="../../../../../assets/imgs/arq1.png" class="object-cover w-full h-full" alt="designer" height="1027" width="1920">
+  </div>
+
+
+</div>
+
+
+
