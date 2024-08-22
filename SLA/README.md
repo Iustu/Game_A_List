@@ -115,8 +115,21 @@ Não houve melhorias no processo de escrita na base de dados local. O tempo e os
 
 ![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/BuscarJogosDaBiblioteca_Teste12.png)
 
+# Gráficos do segundo teste de carga do serviço "Buscar jogos da biblioteca do usuário"
+
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Segundo_Teste/BuscarJogosDaBiblioteca_Teste11.png)
+
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Segundo_Teste/BuscarJogosDaBiblioteca_Teste12.png)
+
 # Gráficos do primeiro teste de carga do serviço "Atualizar dados do usuário
 
-![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/AtualizarDadosDoUsuario_Teste11.png)
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/AtualizarDadosDoUsuario_Teste21.png)
 
-![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/AtualizarDadosDoUsuario_Teste12.png)
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Primeiros_Testes/AtualizarDadosDoUsuario_Teste22.png)
+
+# Gráficos do segundo teste de carga do serviço "Atualizar dados do usuário
+
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Segundo_Teste/AtualizarDadosDoUsuario_Teste21.png)
+
+![Caso não consiga ver, entre na pasta "Primeiros_Testes](https://github.com/Iustu/Game_A_List/blob/main/SLA/Segundo_Teste/AtualizarDadosDoUsuario_Teste22.png)
+
