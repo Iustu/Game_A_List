@@ -51,7 +51,7 @@ Potenciais gargalos do sistema:
 - concorrência (limite de requisições simultâneas): 18 requisições
 
 #### Melhorias: 
-tentamos melhorar o tempo de resposta do banco de dados MongoDB mudando o local de seu servidor em nuvem de Ohio para São Paulo, mas o resultado não foi o esperado - pela medição, o tempo de resposta aumentou.
+Tentamos melhorar o tempo de resposta do banco de dados MongoDB mudando o local de seu servidor em nuvem de Ohio para São Paulo, mas o resultado não foi o esperado - pela medição, o tempo de resposta aumentou.
 
 
 ## Atualizar dados do usuário
