@@ -24,7 +24,7 @@ export class ListjogosComponent implements OnInit {
    error=true;
 
   constructor(){
-    this.menuSignal.setMenu({title:'Atendimentos', backRoute: null});
+    this.menuSignal.setMenu({title:'Feed', backRoute: null});
   }
 
   ngOnInit() {
