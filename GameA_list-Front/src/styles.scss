@@ -84,16 +84,16 @@ ng-validation-messages {
 }
 
 .mat-toolbar {
-  background: #fafafa !important;
+  background: #512DA8 !important;
   border-bottom: 1px solid #e0e0e0;
-  color: black !important;
+  color: #fcfaff !important;
   font-size: 16px !important;
 }
 
 //save-button cinza ao estar desabilitado e com animação ripple
 .save-button {
   margin-bottom: 10px;
-  width: 100%;
+  width: 100px;
   height: 50px;
   background-position: center;
   background-color: #7025D9;
@@ -185,7 +185,9 @@ warn: $game-a-list-warn,*/
   color: mat.get-color-from-palette($game-a-list-warn) !important;
 }
 
-
+.formEdit{
+  width: 900px;
+}
 
 
 
