@@ -43,7 +43,15 @@ Potenciais gargalos do sistema:
 
 ### MEDIÇÃO 2
 
-A ser realizada
+#### Data da medição: 21/08/2024
+
+#### Testes de carga (SLA):
+- latência: 95º percentil - 36,6 ms
+- vazão: 19 requisições/s -- 1734 requisições ao longo do teste
+- concorrência (limite de requisições simultâneas): 18 requisições
+
+#### Melhorias: 
+tentamos melhorar o tempo de resposta do banco de dados MongoDB mudando o local de seu servidor em nuvem de Ohio para São Paulo, mas o resultado não foi o esperado - pela medição, o tempo de resposta aumentou.
 
 
 ## Atualizar dados do usuário
@@ -91,7 +99,15 @@ Potenciais gargalos do sistema:
 
 ### MEDIÇÃO 2
 
-A ser realizada
+#### Data da medição: 21/08/2024
+
+#### Testes de carga (SLA):
+- latência: 95º percentil - 15 ms
+- vazão: 20 requisições/s -- 1780 requisições ao longo do teste
+- concorrência (limite de requisições simultâneas): 19 requisições
+
+#### Melhorias:
+Não houve melhorias no processo de escrita na base de dados local. O tempo e os resultados obtidos foram muito parecidos. É possível notar que, nesse caso, como tanto a base quanto a aplicação funcionam on premise, a conexão entre elas é boa, permitindo um número mais alto de requisições, e concorrência de requisições, em comparação com a conexão da aplicação com a base de dados na nuvem (Cluster MongoDB do Atlas).
 
 # Gráficos do primeiro teste de carga do serviço "Buscar jogos da biblioteca do usuário"
 
