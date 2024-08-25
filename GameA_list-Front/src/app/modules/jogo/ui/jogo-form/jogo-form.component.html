@@ -1,48 +1,24 @@
 <form [formGroup]="form" class="grid grid-cols-1 mt-5">
 
     <mat-form-field class="mat-badge-medium col-span-2">
-        <mat-label>Nome:</mat-label>
-        <input matInput value="" formControlName="name">
+        <mat-label>Titulo:</mat-label>
+        <input matInput value="" formControlName="titulo">
         <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
     </mat-form-field>
 
     <mat-form-field class="mat-badge-medium col-span-2">
-        <mat-label>Endereço Completo:</mat-label>
-        <input matInput value="" formControlName="address">
+        <mat-label>Publicadora:</mat-label>
+        <input matInput value="" formControlName="publicadora">
         <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
     </mat-form-field>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 w-full self-center">
 
         <mat-form-field class="mat-badge-medium col-span-2 md:col-span-1">
-            <mat-label>Telefone de contato:</mat-label>
-            <input matInput type="text" inputmode="numeric"
-            formControlName="cellphone" mask="(00) 00000-0000" placeholder="(00) 00000-0000">
+            <mat-label>Estudio:</mat-label>
+            <input matInput value="" type="text" formControlName="estudio">
             <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
         </mat-form-field>
-
-        <mat-form-field class="mat-badge-medium col-span-2 md:col-span-1">
-            <mat-label>Email:</mat-label>
-            <input matInput value="" type="text" formControlName="email">
-            <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="mat-badge-medium col-span-2 md:col-span-1">
-            <mat-label>Data de Nascimento</mat-label>
-            <input matInput inputmode="numeric"
-            formControlName="birthdayString" mask="00/00/0000" placeholder="00/00/0000">
-            <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="mat-badge-medium col-span-2 md:col-span-1">
-            <mat-label>Sexo</mat-label>
-            <mat-select formControlName="gender">
-              <mat-option value="M">Masculino</mat-option>
-              <mat-option value="F">Feminino</mat-option>
-              <mat-option value="O">Outro</mat-option>
-            </mat-select>
-            <mat-error> <ng-validation-messages></ng-validation-messages> </mat-error>
-          </mat-form-field>
     </div>
 
     <mat-form-field class="mat-badge-medium col-span-2">

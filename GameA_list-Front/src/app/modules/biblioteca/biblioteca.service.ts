@@ -2,31 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
-import { jogo } from './jogo.model';
+import { biblioteca } from './biblioteca.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class jogoService {
+export class bibliotecaService {
 
   constructor(private http: HttpClient) { }
 
   searchBar: WritableSignal<string>  = signal("");
 
-  findAll() {
-    return this.http.get<jogo[]>(environment.apiUrl + '/jogo');
+  findAll(id: string) {
+    return this.http.get<biblioteca[]>(environment.apiUrl + '/ownedGames'+ '/' + id);
   }
 
-  create(jogo:jogo){
-    return this.http.post<jogo>(environment.apiUrl + '/jogo', jogo);
+  create(biblioteca:biblioteca){
+    return this.http.post<biblioteca>(environment.apiUrl + '/ownedGames/new', biblioteca);
   }
 
   findById(id: string) {
-    return this.http.get<jogo>(environment.apiUrl + '/jogo' + '/' + id);
+    return this.http.get<biblioteca>(environment.apiUrl + '/bibliotecas' + '/' + id);
   }
 
-  update(id: string, jogo:jogo) {
-    return this.http.put<jogo>(environment.apiUrl + '/jogo' + '/' + id, jogo);
+  update(biblioteca:biblioteca) {
+    return this.http.post<biblioteca>(environment.apiUrl + '/ownedGames/update', biblioteca);
   }
 
   getDateAsString(data:Date) {

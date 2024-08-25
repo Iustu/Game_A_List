@@ -28,6 +28,10 @@ public class JogoPossuido {
     @Size(min = 4,max = 150,message = "plataforma deve ter entre 4 e 150 caracteres")
     public String plataforma;
 
+    @NotBlank
+    @Size(min = 4,max = 150,message = "Titulo deve ter entre 4 e 150 caracteres")
+    public String titulo;
+
     @Size(min = 10, max = 10)
     @Pattern(regexp ="\\d{2}/\\d{2}/\\d{4}")
     public String dataAdicao;

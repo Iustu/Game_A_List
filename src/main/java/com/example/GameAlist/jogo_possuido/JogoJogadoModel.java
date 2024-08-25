@@ -16,10 +16,10 @@ class JogoJogadoModel extends JogoPossuidoModel{
 
     public JogoJogadoModel(){}
 
-    public JogoJogadoModel(String id, Long idUsuario, Long idJogo, String plataforma, LocalDate dataAdicao,
+    public JogoJogadoModel(String id, Long idUsuario, Long idJogo, String plataforma, String titulo, LocalDate dataAdicao,
                            StatusJogo estado, String feedback, double horasJogadas, int nota) {
 
-        super(id,idUsuario,idJogo,plataforma,dataAdicao,estado);
+        super(id,idUsuario,idJogo,plataforma,dataAdicao,estado, titulo);
         this.feedback = feedback;
         this.horasJogadas = horasJogadas;
         this.nota = nota;

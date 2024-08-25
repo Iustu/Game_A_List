@@ -22,6 +22,9 @@ const routes: Routes = [
 
     {path: 'jogos', canActivate: [authGuard], loadChildren: () => import('./modules/jogo/jogo.module')
         .then(m => m.jogoModule) },
+    
+    {path: 'biblioteca', canActivate: [authGuard], loadChildren: () => import('./modules/biblioteca/biblioteca.module')
+            .then(m => m.bibliotecaModule) },
 ]
 
 @NgModule({

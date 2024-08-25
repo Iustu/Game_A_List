@@ -1,7 +1,7 @@
 
 
 
-<mat-card role="button" class="my-3 drop-shadow cursor-pointer hover:drop-shadow-md" [routerLink]="['./detail']">
+<mat-card role="button" class="my-3 drop-shadow cursor-pointer hover:drop-shadow-md" [routerLink]="['./detail', biblioteca.id]">
 
   <mat-card-content>
     <div class="flex flex-row gap-3">
@@ -12,15 +12,15 @@
 
       <div class="flex flex-col sm:flex-row flex-wrap grow gap-2">
         <div class="flex flex-col grow gap-2">
-          <div class="font-medium"> {{jogo.titulo}} </div>
-          <div> {{jogo.publicadora}} </div>
+          <div class="font-medium"> {{biblioteca.titulo}} </div>
+          <div> Horas Jogadas: {{biblioteca.horasJogadas}} </div>
         </div>
         <div class="flex sm:flex-col flex-wrap gap-2">
           <div class="flex items-center text-amber-500 px-1">
             <mat-icon class="flex-none label text-lg/[22px]">label</mat-icon>
             <div class="flex-1 text-amber-600 text-sm font-medium">Atender</div>
           </div>
-          <div class="text-sm"> {{jogo.estudio | date : 'dd/MM/yyyy'}} </div>
+          <div class="text-sm"> {{biblioteca.estado}} </div>
         </div>
       </div>
 

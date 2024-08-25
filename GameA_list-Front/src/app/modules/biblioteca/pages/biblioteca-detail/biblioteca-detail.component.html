@@ -1,0 +1,7 @@
+<div class="container-content">
+    <app-biblioteca-form [formGroup]="form"></app-biblioteca-form>
+    <button (click)="updateClient()" class="save-button" [disabled]="!form.valid">
+        Salvar
+    </button>
+</div>
+

@@ -4,6 +4,7 @@ import { LayoutLoggedComponent } from 'src/app/shared/layout/logged/layout-logge
 
 import { AddjogoComponent } from './pages/add/add-jogo.component';
 import { ListjogosComponent } from './pages/list/list-jogos.component';
+import { jogoDetailComponent } from './pages/jogo-detail/jogo-detail.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       {path: '', component:  ListjogosComponent},
       {path : 'add', component: AddjogoComponent},
+      {path: 'detail/:id', component: jogoDetailComponent}
     ]
   },
 ];

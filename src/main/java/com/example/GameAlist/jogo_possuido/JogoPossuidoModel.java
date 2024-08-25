@@ -19,6 +19,8 @@ class JogoPossuidoModel {
     protected Long idJogo;
     protected String plataforma;
 
+    protected String titulo;
+
     @Field(targetType = FieldType.STRING)
     protected LocalDate dataAdicao;
     @Field(targetType = FieldType.STRING)
@@ -30,13 +32,14 @@ class JogoPossuidoModel {
     public JogoPossuidoModel(){}
 
     public JogoPossuidoModel(String id,Long idUsuario, Long idJogo, String plataforma, LocalDate dataAdicao,
-                             StatusJogo estado) {
+                             StatusJogo estado, String titulo) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.idJogo = idJogo;
         this.plataforma = plataforma;
         this.dataAdicao = Objects.requireNonNullElseGet(dataAdicao, LocalDate::now);
         this.estado = estado;
+        this.titulo = titulo;
     }
     public JogoPossuidoModel(JogoPossuido jogo) {
 
@@ -44,6 +47,7 @@ class JogoPossuidoModel {
         this.idUsuario = jogo.idUsuario;
         this.idJogo = jogo.idJogo;
         this.plataforma = jogo.plataforma;
+        this.titulo = jogo.titulo;
 
         if(jogo.dataAdicao!=null){
             this.dataAdicao = LocalDate.parse(jogo.dataAdicao,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -75,6 +79,7 @@ class JogoPossuidoModel {
         return estado;
     }
 
+    public String getTitulo() { return titulo; }
 
     /** Setters **/
 
@@ -97,4 +102,6 @@ class JogoPossuidoModel {
     public void setEstado(StatusJogo estado) {
         this.estado = estado;
     }
+
+    public void setTitulo(String titulo) { this.titulo = titulo; }
 }

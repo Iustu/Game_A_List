@@ -43,7 +43,7 @@ export class LogInComponent {
         (res) => {
           console.log('login com sucesso!');
           this.spinner.hide();
-          this.router.navigate(['/jogos']);
+          this.router.navigate(['/biblioteca']);
         },
         (error) => { // Use o nome 'error' para o manipulador de erro
           console.log('login com erro:', error);

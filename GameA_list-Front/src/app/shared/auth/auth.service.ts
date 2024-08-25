@@ -36,6 +36,7 @@ export class AuthService {
           const accessToken = res.senha;
           res.senha = null;
           localStorage.setItem('user', JSON.stringify(res));
+          localStorage.setItem('userId', res.idUsuario);
           localStorage.setItem('accessToken', accessToken);
           return 'Login com sucesso';
         }),

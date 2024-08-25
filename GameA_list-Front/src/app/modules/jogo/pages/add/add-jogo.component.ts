@@ -22,13 +22,10 @@ export class AddjogoComponent implements OnInit {
 
 
   public form = this.fb.group({
-    name: ['', [ Validators.required, Validators.minLength(3), Validators.maxLength(100)] ],
-    address: ['', [ Validators.maxLength(250) ]],
-    cellphone: ['', [ Validators.required]],
-    email: ['', [Validators.email, Validators.maxLength(100)]],
-    birthdayString: ['', [ ]] ,
-    gender: ['', [ Validators.required ]],
-    description: ['', [ Validators.maxLength(2500)]]
+    titulo: ['', [ Validators.maxLength(250) ]],
+    imagem: ['', []],
+    publicadora: ['', [Validators.maxLength(100)]],
+    estudio: ['', [ ]] ,
   })
 
   ngOnInit(): void {
@@ -36,18 +33,16 @@ export class AddjogoComponent implements OnInit {
   }
 
   updateClient() {
-    const birthdayString = this.form.controls['birthdayString'].value!
-    const birthdayDate = new Date(this.jogoService.getDateAsISO(birthdayString));
 
     let formObj = this.form.getRawValue();
-    let client : jogo = {uid:null, createdAt:new Date(),birthday:birthdayDate, ...formObj}
+    let client : jogo = {id:null, ...formObj}
 
     this.spinner.show();
     this.jogoService.create(client).subscribe({
       next: (r)=>{
         this.spinner.hide();
         this.router.navigate(['./jogos'])
-        this.toastr.success('Cliente Cadastrado com sucesso!');
+        this.toastr.success('Jogo Cadastrado com sucesso!');
       },
       error:(e)=>{
         this.spinner.hide();
