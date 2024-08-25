@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {path: '', component:  ListjogosComponent},
       {path : 'add', component: AddjogoComponent},
-      {path: 'detail/:id', component: jogoDetailComponent}
+      {path: 'detail', component: jogoDetailComponent}
     ]
   },
 ];
