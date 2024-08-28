@@ -23,6 +23,7 @@ import { bibliotecaFormComponent } from './ui/biblioteca-form/biblioteca-form.co
 import { ItemListComponent } from './ui/item-list/item-list.component';
 import { SearchBarComponent } from './ui/search-bar/search-bar.component';
 import { bibliotecaDetailComponent } from './pages/biblioteca-detail/biblioteca-detail.component';
+import { jogoModule } from '../jogo/jogo.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { bibliotecaDetailComponent } from './pages/biblioteca-detail/biblioteca-
     AddbibliotecaComponent,
     SearchBarComponent,
     bibliotecaFormComponent,
-    bibliotecaDetailComponent
+    bibliotecaDetailComponent,
   ],
     imports: [
         CommonModule,
@@ -52,6 +53,7 @@ import { bibliotecaDetailComponent } from './pages/biblioteca-detail/biblioteca-
         MatTabsModule,
         NgOptimizedImage,
         SharedModule,
+        jogoModule,
         NgxMaskDirective,
         NgxMaskPipe,
     ],

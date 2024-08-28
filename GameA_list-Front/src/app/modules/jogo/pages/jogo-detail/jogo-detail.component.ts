@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { LocationStrategy } from '@angular/common';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 import { jogo } from '../../jogo.model';
 
@@ -10,24 +9,23 @@ import { jogo } from '../../jogo.model';
 })
 export class jogoDetailComponent implements OnInit {
 
-  //state: any
-  //constructor(private location: LocationStrategy) {}
-
   private fb: FormBuilder = inject(FormBuilder);
+
+  jogo!: jogo;
 
 
   public form = this.fb.group({
-    titulo: ['', [ Validators.maxLength(250) ]],
-    imagem: ['', []],
-    publicadora: ['', [Validators.maxLength(100)]],
-    estudio: ['', [ ]] ,
+    titulo: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    imagem: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    publicadora: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    estudio:new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
   })
 
-
+  
   ngOnInit(): void {
-    const jogo : jogo = history.state.data as jogo
+    this.jogo = history.state.data as jogo
     this.form.patchValue({
-      ...jogo
+      ...this.jogo
     });
   }
 

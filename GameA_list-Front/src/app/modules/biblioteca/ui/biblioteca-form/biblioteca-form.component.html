@@ -24,7 +24,7 @@
 
         <mat-form-field class="mat-badge-medium col-span-2 md:col-span-2">
             <mat-label>Estado</mat-label>
-            <mat-select formControlName="estado">
+            <mat-select formControlName="estado" (selectionChange)="onSelectionChanged($event)">
               <mat-option value="NAO_JOGADO">Não-jogado</mat-option>
               <mat-option value="JOGANDO">Jogando</mat-option>
               <mat-option value="DROPADO">Dropado</mat-option>

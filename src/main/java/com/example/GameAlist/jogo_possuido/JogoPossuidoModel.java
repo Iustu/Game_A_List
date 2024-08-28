@@ -50,7 +50,7 @@ class JogoPossuidoModel {
         this.titulo = jogo.titulo;
 
         if(jogo.dataAdicao!=null){
-            this.dataAdicao = LocalDate.parse(jogo.dataAdicao,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            this.dataAdicao = LocalDate.parse(jogo.dataAdicao,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         }
         else this.dataAdicao = LocalDate.now();
 

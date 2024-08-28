@@ -1,12 +1,10 @@
 <div class="container-content">
     <mat-tab-group>
-        <mat-tab label="Novo Cliente">
+        <mat-tab label="Novo jogo">
             <app-jogo-form [formGroup]="form"></app-jogo-form>
             <button (click)="updateClient()" class="save-button" [disabled]="!form.valid">
                 Salvar
             </button>
         </mat-tab>
-        <mat-tab label="Imóveis" disabled></mat-tab>
-        <mat-tab label="Projetos" disabled> </mat-tab>
     </mat-tab-group>
 </div>

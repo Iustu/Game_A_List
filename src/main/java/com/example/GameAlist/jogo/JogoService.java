@@ -2,10 +2,8 @@ package com.example.GameAlist.jogo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -43,32 +41,7 @@ public class JogoService {
         jogoRepository.deleteById(jogoId);
     }
 
-    @Transactional
-    public void updateJogo(Long jogoId, String titulo, String imagem, String publicadora, String estudio) {
-        Jogo jogo = jogoRepository.findById(jogoId).orElseThrow(() -> new IllegalStateException("jogo de id "+jogoId+" nao existe"));
-
-        if (titulo != null && titulo.length()>0 && !Objects.equals(jogo.getTitulo(),titulo)){
-            Optional<Jogo> jogoByTitulo = jogoRepository.findJogoByTitulo(titulo);
-
-            if (jogoByTitulo.isPresent()) {
-                throw new IllegalStateException("Titulo já presente");
-            }
-
-            jogo.setTitulo(titulo);
-        }
-
-        if (imagem != null && imagem.length()>0 && !Objects.equals(jogo.getImagem(),imagem)){
-            jogo.setImagem(imagem);
-        }
-
-        if (publicadora != null && publicadora.length()>0 && !Objects.equals(jogo.getPublicadora(),publicadora)){
-            jogo.setPublicadora(publicadora);
-        }
-
-        if (estudio != null && estudio.length()>0 && !Objects.equals(jogo.getEstudio(),estudio)){
-            jogo.setEstudio(estudio);
-        }
-
-        //jogoRepository.save(jogo);
+    Optional<Jogo> buscarJogoPorId(long id){
+        return jogoRepository.findById(id);
     }
 }

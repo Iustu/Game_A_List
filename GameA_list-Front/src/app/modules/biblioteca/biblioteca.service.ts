@@ -42,11 +42,11 @@ export class bibliotecaService {
     return dayFixed.toString() +'/'+ monthFixed.toString() +'/'+ year.toString();
   }
 
-  getDateAsISO(dataForm:string) {
+  getDateAsISO(dataForm:string | null) {
    
-    if(dataForm=='') return '';
+    if(!dataForm) return '';
 
-    const splitDate = dataForm.split('/');;
+    const splitDate = dataForm.split('-');;
 
     const date = new Date(splitDate[2] + '/' +  splitDate[1] + '/' +  splitDate[0])
 

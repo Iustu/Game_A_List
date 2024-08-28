@@ -1,6 +1,6 @@
 <div class="container-content">
     <app-jogo-form [formGroup]="form"></app-jogo-form>
-    <button class="normal-button" [disabled]="!form.valid">
+    <button class="normal-button" [routerLink]="['/biblioteca/add']" [state]="{data:jogo}">
         Salvar na biblioteca
     </button>
 </div>

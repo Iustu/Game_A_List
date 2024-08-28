@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {path: '', component:  ListbibliotecasComponent},
       {path : 'add', component: AddbibliotecaComponent},
-      {path:'detail:id', component: bibliotecaDetailComponent}
+      {path:'detail', component: bibliotecaDetailComponent}
     ]
   },
 ];

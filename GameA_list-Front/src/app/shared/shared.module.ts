@@ -18,6 +18,7 @@ import { LayoutLoggedComponent } from './layout/logged/layout-logged.component';
     LayoutBlankComponent,
     LayoutLoggedComponent,
     MenuMobileComponent,
+    
   ],
   imports: [
     CommonModule,

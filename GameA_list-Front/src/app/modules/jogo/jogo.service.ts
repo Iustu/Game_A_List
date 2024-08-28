@@ -18,10 +18,10 @@ export class jogoService {
   }
 
   create(jogo:jogo){
-    return this.http.post<jogo>(environment.apiUrl + '/jogo', jogo);
+    return this.http.post<jogo>(environment.apiUrl + '/jogo/new', jogo);
   }
 
-  findById(id: string) {
+  findById(id: number) {
     return this.http.get<jogo>(environment.apiUrl + '/jogo' + '/' + id);
   }
 

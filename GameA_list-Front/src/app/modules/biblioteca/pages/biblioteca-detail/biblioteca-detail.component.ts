@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 import { biblioteca } from '../../biblioteca.model';
 import { bibliotecaService } from '../../biblioteca.service';
+import { jogoService } from 'src/app/modules/jogo/jogo.service';
 
 @Component({
   selector: 'app-biblioteca-detail',
@@ -13,51 +13,54 @@ import { bibliotecaService } from '../../biblioteca.service';
 })
 export class bibliotecaDetailComponent implements OnInit {
   constructor(
-    private varRoute : ActivatedRoute,
     private bibliotecaService: bibliotecaService,
+    private jogoService: jogoService,
     private loading: NgxSpinnerService,
-    private toast: ToastrService,
-    private router: Router){}
+    private toast: ToastrService){}
 
   private fb: FormBuilder = inject(FormBuilder);
 
 
   public form = this.fb.group({
-    idUsuario: [0, [ Validators.maxLength(250) ]],
-    idJogo: [0, [ Validators.required]],
-    titulo: ['', [Validators.email, Validators.maxLength(100)]],
-    plataforma: ['', [ ]] ,
+    plataforma: new FormControl({value: '', disabled: true}, [Validators.maxLength(100),Validators.required]) ,
     estado: ['', [ Validators.required ]],
-    feedback: ['', [ Validators.maxLength(2500)]],
-    horasJogadas: [0, [ Validators.maxLength(2500)]],
-    nota: [0, [ Validators.maxLength(2500)]],
+    feedback: new FormControl({value: '', disabled: false}, [Validators.maxLength(100)]),
+    horasJogadas: new FormControl({value: 0, disabled: false}, []),
+    nota: new FormControl({value: 0, disabled: false}, [Validators.max(10), Validators.min(0)]),
+  })
 
-    
+  public formJogo = this.fb.group({
+    titulo: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    imagem: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    publicadora: new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
+    estudio:new FormControl({value: '', disabled: true}, [Validators.maxLength(100)]),
   })
 
 
   biblioteca!: biblioteca;
-  private routeId : any;
+
 
   ngOnInit(): void {
-    this.varRoute.paramMap.subscribe(paramMap => {
-      this.routeId=paramMap.get('id');
-    })
+    
+    this.biblioteca = history.state.data as biblioteca;
 
-    this.buscarCliente(this.routeId);
+    this.buscarJogo(this.biblioteca.idJogo!);
+
+    this.form.patchValue({
+      ...this.biblioteca
+    });
   }
 
-  buscarCliente(id:string) {
-    this.bibliotecaService.findById(id).subscribe({
+  buscarJogo(id:number){
+    this.jogoService.findById(id).subscribe({
       next: (res)=>{
-        this.form.patchValue({
+        this.formJogo.patchValue({
           ...res
         });
-        this.biblioteca=res;
         this.loading.hide();
       },
       error:(e)=>{
-        this.toast.error("Ocorreu um erro ao encontrar os dados da biblioteca");
+        this.toast.error("Ocorreu um erro ao encontrar os dados do jogo na biblioteca");
         console.log(e);
         this.loading.hide();
       }
@@ -65,20 +68,25 @@ export class bibliotecaDetailComponent implements OnInit {
   }
 
   updateClient() {
-
     let formJson= this.form.getRawValue()
     let req : biblioteca={
-      id:this.biblioteca.id, ...formJson, dataAdicao: this.biblioteca.dataAdicao
+      id: this.biblioteca.id,
+      idJogo: this.biblioteca.idJogo,
+      idUsuario: this.biblioteca.idUsuario,
+      titulo: this.biblioteca.titulo,
+      dataAdicao: this.biblioteca.dataAdicao,
+       ...formJson,
+        
     }
     this.loading.show()
     this.bibliotecaService.update(req).subscribe({
       next:()=>{
         this.loading.hide();
-        this.toast.success("Cliente atualizado com sucesso!")
+        this.toast.success("jogo da biblioteca atualizado com sucesso!")
       },
       error:()=>{
         this.loading.hide();
-        this.toast.error("Ocorreu um erro ao alterar o cliente")
+        this.toast.error("Ocorreu um erro ao alterar o jogo da biblioteca")
       }
     })
   }

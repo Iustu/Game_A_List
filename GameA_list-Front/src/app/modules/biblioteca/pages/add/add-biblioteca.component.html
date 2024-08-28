@@ -1,6 +1,6 @@
 <div class="container-content">
     <mat-tab-group>
-        <mat-tab label="Novo jogo na biblioteca">
+        <mat-tab label="Salvando {{jogo.titulo}} na biblioteca">
             <app-biblioteca-form [formGroup]="form"></app-biblioteca-form>
             <button (click)="updateClient()" class="save-button" [disabled]="!form.valid">
                 Salvar

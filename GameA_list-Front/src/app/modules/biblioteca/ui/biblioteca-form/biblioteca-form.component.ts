@@ -15,4 +15,21 @@ export class bibliotecaFormComponent implements OnInit  {
     this.form = this.rootFormGroup.form as FormGroup;
   }
 
+  onSelectionChanged({value}:any) {
+    if (value === 'NAO_JOGADO') {
+      this.form.get('horasJogadas')!.disable()
+      this.form.get('horasJogadas')!.setValue(0);
+
+      this.form.get('nota')!.disable()
+      this.form.get('nota')!.setValue(0);
+
+      this.form.get('feedback')!.disable()
+      this.form.get('feedback')!.setValue('');
+    } else {
+      this.form.get('horasJogadas')!.enable();
+      this.form.get('nota')!.enable();
+      this.form.get('feedback')!.enable();
+    }
+  }
+
 }

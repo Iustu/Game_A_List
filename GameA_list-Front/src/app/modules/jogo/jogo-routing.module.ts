@@ -15,7 +15,9 @@ const routes: Routes = [
     children: [
       {path: '', component:  ListjogosComponent},
       {path : 'add', component: AddjogoComponent},
-      {path: 'detail', component: jogoDetailComponent}
+      {path: 'detail', component: jogoDetailComponent},
+      {path: 'biblioteca', loadChildren: () => import('../biblioteca/biblioteca.module')
+        .then(m => m.bibliotecaModule) },
     ]
   },
 ];

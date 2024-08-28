@@ -1,4 +1,5 @@
 <div class="container-content">
+    <app-jogo-form [formGroup]="formJogo"></app-jogo-form>
     <app-biblioteca-form [formGroup]="form"></app-biblioteca-form>
     <button (click)="updateClient()" class="save-button" [disabled]="!form.valid">
         Salvar
